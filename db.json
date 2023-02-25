@@ -949,7 +949,7 @@
       "id": 1,
       "name": "Primo乳酪火腿綜合拼盤",
       "price": 780,
-      "imgUrl": "src/assets/images/order/products/contorni01.jpg",
+      "imgUrl": "/vue_diriccardo/assets/images/order/products/contorni01.jpg",
       "type": "contorni"
     },
     {
