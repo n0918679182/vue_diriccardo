@@ -1,6 +1,9 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 import cartStore from './cartStore';
+import e1 from "../assets/images/event/post/event1.png";
+import e2 from "../assets/images/event/post/event2.png";
+import e3 from "../assets/images/event/post/event3.png";
 
 export default defineStore('eventStore', {
     state: () => ({

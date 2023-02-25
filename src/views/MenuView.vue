@@ -12,16 +12,21 @@
     </div>
 </template>
 <script>
+import menu1 from "../assets/images/menu/menu1.png";
+import menu2 from "../assets/images/menu/menu2.png";
+import menu3 from "../assets/images/menu/menu3.png";
+import menu4 from "../assets/images/menu/menu4.png";
+import menu5 from "../assets/images/menu/menu5.png";
 export default {
   data() {
     return {
       pages: [
         null,
-        "/vue_diriccardo/src/assets/images/menu/menu1.png",
-        "/vue_diriccardo/src/assets/images/menu/menu2.png",
-        "/vue_diriccardo/src/assets/images/menu/menu3.png",
-        "/vue_diriccardo/src/assets/images/menu/menu4.png",
-        "/vue_diriccardo/src/assets/images/menu/menu5.png",
+        menu1,
+        menu2,
+        menu3,
+        menu4,
+        menu5,
       ],
     }
   },
