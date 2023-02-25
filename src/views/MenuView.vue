@@ -17,11 +17,11 @@ export default {
     return {
       pages: [
         null,
-        '../assets/images/menu/menu1.png',
-        '../assets/images/menu/menu2.png',
-        '../assets/images/menu/menu3.png',
-        '../assets/images/menu/menu4.png',
-        '../assets/images/menu/menu5.png',
+        "/vue_diriccardo/src/assets/images/menu/menu1.png",
+        "/vue_diriccardo/src/assets/images/menu/menu2.png",
+        "/vue_diriccardo/src/assets/images/menu/menu3.png",
+        "/vue_diriccardo/src/assets/images/menu/menu4.png",
+        "/vue_diriccardo/src/assets/images/menu/menu5.png",
       ],
     }
   },
