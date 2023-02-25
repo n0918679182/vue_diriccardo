@@ -13,7 +13,6 @@ export default defineStore('tablesStore', {
                 this.tables = resp.data
                 if (localStorage.getItem('tableId')) {
                     this.showStaffLogin = this.tables.filter(o => o.tableId == localStorage.getItem('tableId'))[0].using;
-                    console.log('showStaffLogin', this.showStaffLogin)
                     if (this.showStaffLogin == 0) {
                         // document.getElementById('orderBillClose').click();
                         // document.getElementById('toHomePage').click();
@@ -23,7 +22,7 @@ export default defineStore('tablesStore', {
                     }
                 }
             }).catch(err => {
-                console.log('tablesStore err', err.response.data.message);
+                alert(err.response.data.message);
             });
         },
         // 修改桌位資訊成啟用狀態
@@ -37,13 +36,8 @@ export default defineStore('tablesStore', {
                 "staffId": tableInfo.staffCode,
                 "using": 1
             }).catch(err => {
-                console.log('tablesStore patch err', err.response.data.message);
+                alert(err.response.data.message);
             });
-        },
-        getTableById(id) {
-            axios.get('http://localhost:3000/tableState?tableId=' + id).then(resp => {
-                console.log(resp)
-            })
         },
         // 判斷是否鎖定螢幕 (點擊我要結帳變更參數)
         checkStateForLock() {

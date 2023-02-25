@@ -25,9 +25,6 @@ export default defineStore('eventStore', {
             this.tempBr.subTitle = this.tempEvent.subTitle.split('\n');
             this.tempBr.detail = this.tempEvent.detail.split('\n');
         },
-        addToOrder() {
-            console.log(123)
-        },
         async addToOrder() {
             const { randomOrderId } = cartStore();
             let haveBill = false;
@@ -77,7 +74,7 @@ export default defineStore('eventStore', {
                     //     timer: 1500
                     // });
                     alert('餐點已送出');
-                }).catch(err => console.log(err.message));
+                }).catch(err => alert(err.response.data.message));
             } else {
                 // DB建立訂單
                 axios.post('http://localhost:3000/orderList', tempOrder).then(resp => {
@@ -89,7 +86,7 @@ export default defineStore('eventStore', {
                     //     timer: 1500
                     // });
                     alert('餐點已送出');
-                }).catch(err => console.log(err.message));
+                }).catch(err => alert(err.response.data.message));
 
                 // 更新桌位資訊的 orderSerial
                 axios.get('http://localhost:3000/tableState').then(resp => {
@@ -97,7 +94,7 @@ export default defineStore('eventStore', {
                     tempId = resp.data.filter(o => {
                         return o.tableId == localStorage.getItem('tableId');
                     })[0].id
-                    axios.patch('http://localhost:3000/tableState/' + tempId, { orderSerial: newSerial }).catch(err => console.log(err.message));
+                    axios.patch('http://localhost:3000/tableState/' + tempId, { orderSerial: newSerial }).catch(err => alert(err.response.data.message));
                 })
             }
         },

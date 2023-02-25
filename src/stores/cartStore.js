@@ -38,7 +38,6 @@ export default defineStore('cartStore', {
                 }
             }
             document.getElementById('closeOrderItemModal').click();
-            console.log('chosenOrder', this.chosenOrders)
         },
         // 取得已選餐點
         getChonseOrders() {
@@ -128,7 +127,7 @@ export default defineStore('cartStore', {
                     //     showConfirmButton: false,
                     //     timer: 1500
                     // })
-                }).catch(err => console.log(err.message))
+                }).catch(err => alert(err.response.data.message));
             } else {
                 // DB建立訂單
                 axios.post('http://localhost:3000/orderList', tempOrder).then(resp => {
@@ -144,9 +143,7 @@ export default defineStore('cartStore', {
                     //     timer: 1500
                     // })
                     alert('餐點已送出')
-                }).catch(err => {
-                    console.log(err.message);
-                });
+                }).catch(err => alert(err.response.data.message));
 
                 // 更新桌位資訊的 orderSerial
                 axios.get('http://localhost:3000/tableState').then(resp => {
@@ -154,7 +151,7 @@ export default defineStore('cartStore', {
                     tempId = resp.data.filter(o => {
                         return o.tableId == localStorage.getItem('tableId');
                     })[0].id
-                    axios.patch('http://localhost:3000/tableState/' + tempId, { orderSerial: newSerial }).catch(err => console.log('建立或更新訂單 更新桌位資訊的訂單編號 patch 出錯'));
+                    axios.patch('http://localhost:3000/tableState/' + tempId, { orderSerial: newSerial }).catch(err => alert(err.response.data.message));
                 })
             }
 
@@ -180,13 +177,13 @@ export default defineStore('cartStore', {
                 theOrder.orders.forEach(item => {
                     alreadyOrders.push(item);
                 })
-                axios.patch('http://localhost:3000/kitchenOrders/' + orderId, { orders: alreadyOrders }).catch(err => console.log(err.message));
+                axios.patch('http://localhost:3000/kitchenOrders/' + orderId, { orders: alreadyOrders }).catch(err => alert(err.response.data.message));
             } else {
                 const kitchenOrder = {
                     tableId: theOrder.tableId,
                     orders: theOrder.orders
                 }
-                axios.post('http://localhost:3000/kitchenOrders', kitchenOrder).catch(err => console.log(err.message));
+                axios.post('http://localhost:3000/kitchenOrders', kitchenOrder).catch(err => alert(err.response.data.message));
             }
         },
         // 隨機產生訂單編號

@@ -27,7 +27,7 @@ export default defineStore('productStore', {
                     })
                 });
             }).catch(err => {
-                console.log('productStore err', err.response.data.message);
+                alert(err.response.data.message);
             });
         }
     }

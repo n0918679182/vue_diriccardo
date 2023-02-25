@@ -131,7 +131,7 @@
       "tableId": "C06",
       "staffId": "a123",
       "time": 1675008000000,
-      "subtotal": 1999,
+      "subtotal": 720,
       "serial": "FLKF2EJKTO",
       "user": 0,
       "id": 9
@@ -179,6 +179,19 @@
       "serial": "I6GIZ6ZFCI",
       "user": 0,
       "id": 11
+    },
+    {
+      "orders": [
+        2,
+        2
+      ],
+      "tableId": "A03",
+      "staffId": "a",
+      "time": 1677313230064,
+      "subtotal": 720,
+      "serial": "UYTJGLW6R1",
+      "user": 0,
+      "id": 12
     }
   ],
   "staffs": [
@@ -538,14 +551,14 @@
     {
       "id": 3,
       "tableId": "A03",
-      "customerNum": 0,
-      "sitTime": "",
+      "customerNum": "1",
+      "sitTime": "16 : 20",
       "userNum": 0,
-      "state": 0,
-      "orderSerial": "",
-      "staffId": "",
+      "state": 1,
+      "orderSerial": "UYTJGLW6R1",
+      "staffId": "a",
       "colorCode": 3,
-      "using": 0
+      "using": 1
     },
     {
       "id": 4,
@@ -1437,6 +1450,14 @@
         17
       ],
       "id": 8
+    },
+    {
+      "tableId": "A03",
+      "orders": [
+        2,
+        2
+      ],
+      "id": 9
     }
   ]
 }

@@ -19,9 +19,6 @@ export default defineStore('orderStore', {
                 this.tempOrderBill = resp.data.filter(o => {
                     return o.tableId == localStorage.getItem('tableId');
                 })[0]
-                // console.log(resp.data.filter(o => {
-                //   return o.tableId == localStorage.getItem('tableId');
-                // })[0])
                 if (this.tempOrderBill) {
                     // 從訂單資訊中的餐點陣列重新編排統計數量
                     sortedBillOrders = this.tempOrderBill.orders.reduce((prev, curr) => {
@@ -71,7 +68,7 @@ export default defineStore('orderStore', {
                 totalPrice += (o.count * o.price);
             })
             if (localStorage.getItem('orderId')) {
-                axios.patch('http://localhost:3000/orderList/' + localStorage.getItem('orderId'), { subtotal: totalPrice }).catch(err => console.log(err.message));
+                axios.patch('http://localhost:3000/orderList/' + localStorage.getItem('orderId'), { subtotal: totalPrice }).catch(err => alert(err.response.data.message));
             }
             return totalPrice;
         },
