@@ -10,7 +10,6 @@ export default defineStore('loadingStore', {
             setTimeout(()=>{
                 this.isLoading = false;
             }, 500)
-            console.log('loading')
         }
     }
 })

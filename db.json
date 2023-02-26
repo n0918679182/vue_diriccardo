@@ -179,19 +179,6 @@
       "serial": "I6GIZ6ZFCI",
       "user": 0,
       "id": 11
-    },
-    {
-      "orders": [
-        2,
-        2
-      ],
-      "tableId": "A03",
-      "staffId": "a",
-      "time": 1677313230064,
-      "subtotal": 720,
-      "serial": "UYTJGLW6R1",
-      "user": 0,
-      "id": 12
     }
   ],
   "staffs": [
