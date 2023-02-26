@@ -31,6 +31,7 @@
 import { mapState, mapActions } from "pinia";
 import tablesStore from '../stores/tablesStore.js';
 import staffStore from '../stores/staffStore.js';
+import Swal from 'sweetalert2'
 
 export default {
     data() {
@@ -52,11 +53,10 @@ export default {
             let staffLogin = false;
             // 判斷沒有未填欄位
             if (this.tableInfo.tableNum == '' || this.tableInfo.peopleNum == '' || this.tableInfo.staffCode == '') {
-                // Swal.fire({
-                //     title: '<h3 class="text-dark">表單輸入不完整</h3>',
-                //     confirmButtonColor: '#9C0504',
-                // });
-                alert('表單輸入不完整')
+                Swal.fire({
+                    title: '<h3 class="text-dark">表單輸入不完整</h3>',
+                    confirmButtonColor: '#9C0504',
+                });
             } else {
                 // 從員工編號取得員工姓名
                 if (this.staffs) {
@@ -72,10 +72,10 @@ export default {
                 if (staffLogin) {
                     // 修改桌位資訊
                     this.tableUsing(this.tableInfo)
-                    // Swal.fire({
-                    //     title: '<h3 class="text-dark">即將開始點餐系統</h3>',
-                    //     confirmButtonColor: '#9C0504',
-                    // });
+                    Swal.fire({
+                        title: '<h3 class="text-dark">即將開始點餐系統</h3>',
+                        confirmButtonColor: '#9C0504',
+                    });
                     this.tableInfo = {
                         id: '',
                         tableNum: '',
@@ -83,15 +83,13 @@ export default {
                         staffCode: '',
                         staffName: ''
                     }
-                    alert('即將開始點餐系統')
 
                     // 若員工登入失敗則跳出失敗訊息
                 } else {
-                    // Swal.fire({
-                    //     title: '<h3 class="text-dark">員工編號輸入錯誤!</h3>',
-                    //     confirmButtonColor: '#9C0504',
-                    // });
-                    alert('員工編號輸入錯誤')
+                    Swal.fire({
+                        title: '<h3 class="text-dark">員工編號輸入錯誤!</h3>',
+                        confirmButtonColor: '#9C0504',
+                    });
                 }
             }
         },

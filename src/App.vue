@@ -35,9 +35,10 @@
 </template>
 
 <script>
-import { mapActions } from "pinia";
+import { mapActions, mapState } from "pinia";
 import orderStore from './stores/orderStore.js';
 import tablesStore from "./stores/tablesStore.js";
+import loadingStore from "./stores/loadingStore.js";
 
 import { RouterLink, RouterView } from 'vue-router';
 import StartUp from './components/StartUp.vue';
@@ -52,20 +53,16 @@ export default {
     TableInfo,
     BillOffcanvas
   },
-  data() {
-    return {
-      isLoading: false
-    }
-  },
+  computed: {
+    ...mapState(loadingStore, ['isLoading'])
+  }, 
   methods: {
     ...mapActions(orderStore, ['getOrder']),
-    ...mapActions(tablesStore, ['checkStateForLock', 'getTablesState'])
+    ...mapActions(tablesStore, ['checkStateForLock', 'getTablesState']),
+    ...mapActions(loadingStore, ['loading'])
   },
   mounted() {
-    this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 500);
+    this.loading();
     setInterval(()=>{
       this.getTablesState();
     }, 1000);

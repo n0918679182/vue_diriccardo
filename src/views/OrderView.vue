@@ -1,4 +1,5 @@
 <template>
+    <VueLoading v-model:active="isLoading"></VueLoading>
     <div class="order w-100 pt-4 overflow-hidden position-relative vh-100">
         <img src="../assets/images/order/product-bg1.png" class="orderBg_img1" alt="">
         <img src="../assets/images/order/product-bg2.png" class="orderBg_img2" alt="">
@@ -80,21 +81,25 @@ import { mapState, mapActions } from "pinia";
 import productStore from '../stores/productStore.js';
 import cartStore from "../stores/cartStore";
 import SelectedProducts from "../components/SelectedProductsOffcanvas.vue";
+import loadingStore from "../stores/loadingStore";
 
 export default {
     methods: {
         ...mapActions(productStore, ['getProducts']),
-        ...mapActions(cartStore, ['getOrderItem', 'sentOrderItem', 'getChonseOrders'])
+        ...mapActions(cartStore, ['getOrderItem', 'sentOrderItem', 'getChonseOrders']),
+        ...mapActions(loadingStore, ['loading'])
     },
     computed: {
         ...mapState(productStore, ['menuItem', 'products']),
-        ...mapState(cartStore, ['tempProduct','chosenOrders'])
+        ...mapState(cartStore, ['tempProduct','chosenOrders']),
+        ...mapState(loadingStore, ['isLoading'])
     },
     components: {
         SelectedProducts,
     },
     mounted() {
         this.getProducts();
+        this.loading();
     },
 }
 </script>

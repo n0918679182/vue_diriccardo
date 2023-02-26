@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 export default defineStore('cartStore', {
     state: () => ({
@@ -121,12 +122,12 @@ export default defineStore('cartStore', {
                     this.cancelAllChosen();
                     // 關閉側邊offcanvas
                     document.getElementById('chosenOrdersCloseBtn').click();
-                    // Swal.fire({
-                    //     icon: 'success',
-                    //     title: '餐點已送出',
-                    //     showConfirmButton: false,
-                    //     timer: 1500
-                    // })
+                    Swal.fire({
+                        icon: 'success',
+                        title: '餐點已送出',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }).catch(err => alert(err.response.data.message));
             } else {
                 // DB建立訂單
@@ -136,13 +137,12 @@ export default defineStore('cartStore', {
                     this.cancelAllChosen();
                     // 關閉側邊offcanvas
                     document.getElementById('chosenOrdersCloseBtn').click();
-                    // Swal.fire({
-                    //     icon: 'success',
-                    //     title: '餐點已送出',
-                    //     showConfirmButton: false,
-                    //     timer: 1500
-                    // })
-                    alert('餐點已送出')
+                    Swal.fire({
+                        icon: 'success',
+                        title: '餐點已送出',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }).catch(err => alert(err.response.data.message));
 
                 // 更新桌位資訊的 orderSerial

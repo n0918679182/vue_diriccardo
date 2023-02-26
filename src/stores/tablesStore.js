@@ -14,8 +14,6 @@ export default defineStore('tablesStore', {
                 if (localStorage.getItem('tableId')) {
                     this.showStaffLogin = this.tables.filter(o => o.tableId == localStorage.getItem('tableId'))[0].using;
                     if (this.showStaffLogin == 0) {
-                        // document.getElementById('orderBillClose').click();
-                        // document.getElementById('toHomePage').click();
                         localStorage.removeItem('tableId');
                         localStorage.removeItem('staffId');
                         localStorage.removeItem('orderId');

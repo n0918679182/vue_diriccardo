@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 import cartStore from './cartStore';
+import Swal from 'sweetalert2'
 import e1 from "../assets/images/event/post/event1.png";
 import e2 from "../assets/images/event/post/event2.png";
 import e3 from "../assets/images/event/post/event3.png";
@@ -67,25 +68,23 @@ export default defineStore('eventStore', {
             if (haveBill) {
                 axios.patch('http://localhost:3000/orderList/' + billId, { orders: tempOrder.orders, subtotal: oldSubtotal + tempOrder.subtotal }).then(resp => {
                     document.getElementById('checkOrderClose').click();
-                    // Swal.fire({
-                    //     icon: 'success',
-                    //     title: '餐點已送出',
-                    //     showConfirmButton: false,
-                    //     timer: 1500
-                    // });
-                    alert('餐點已送出');
+                    Swal.fire({
+                        icon: 'success',
+                        title: '餐點已送出',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }).catch(err => alert(err.response.data.message));
             } else {
                 // DB建立訂單
                 axios.post('http://localhost:3000/orderList', tempOrder).then(resp => {
                     document.getElementById('checkOrderClose').click();
-                    // Swal.fire({
-                    //     icon: 'success',
-                    //     title: '餐點已送出',
-                    //     showConfirmButton: false,
-                    //     timer: 1500
-                    // });
-                    alert('餐點已送出');
+                    Swal.fire({
+                        icon: 'success',
+                        title: '餐點已送出',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }).catch(err => alert(err.response.data.message));
 
                 // 更新桌位資訊的 orderSerial

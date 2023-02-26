@@ -1,4 +1,5 @@
 <template>
+    <VueLoading v-model:active="isLoading"></VueLoading>
     <div class="event w-100 pt-4 overflow-hidden position-relative vh-100">
         <img src="../assets/images/event/ordered-bg1.png" class="eventBg_img1" alt="">
         <img src="../assets/images/event/ordered-bg2.png" class="eventBg_img2" alt="">
@@ -66,16 +67,20 @@
 <script>
 import { mapState, mapActions } from "pinia";
 import eventStore from "../stores/eventStore";
+import loadingStore from "../stores/loadingStore";
 
 export default {
     computed: {
-        ...mapState(eventStore, ['events', 'tempEvent', 'tempBr'])
+        ...mapState(eventStore, ['events', 'tempEvent', 'tempBr']),
+        ...mapState(loadingStore, ['isLoading'])
     },
     methods: {
-        ...mapActions(eventStore, ['getEvents', 'getEvent', 'addToOrder'])
+        ...mapActions(eventStore, ['getEvents', 'getEvent', 'addToOrder']),
+        ...mapActions(loadingStore, ['loading'])
     },
     mounted() {
         this.getEvents();
+        this.loading();
     },
 }
 </script>

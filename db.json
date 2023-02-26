@@ -131,7 +131,7 @@
       "tableId": "C06",
       "staffId": "a123",
       "time": 1675008000000,
-      "subtotal": 720,
+      "subtotal": 0,
       "serial": "FLKF2EJKTO",
       "user": 0,
       "id": 9
@@ -551,14 +551,14 @@
     {
       "id": 3,
       "tableId": "A03",
-      "customerNum": "1",
-      "sitTime": "16 : 20",
+      "customerNum": 0,
+      "sitTime": "",
       "userNum": 0,
-      "state": 1,
-      "orderSerial": "UYTJGLW6R1",
-      "staffId": "a",
+      "state": 0,
+      "orderSerial": "",
+      "staffId": "",
       "colorCode": 3,
-      "using": 1
+      "using": 0
     },
     {
       "id": 4,
