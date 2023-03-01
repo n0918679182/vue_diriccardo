@@ -8,7 +8,7 @@
         </div>
         <div class="offcanvas-body" v-else>
             <button type="button" class="btn-close text-reset d-none" data-bs-dismiss="offcanvas" aria-label="Close"
-                id="orderBillClose"></button>
+                id="orderBillClose" ref="orderBillClose"></button>
             <div class="border rounded-1 bg-white h-100 py-4 px-4 d-flex flex-column justify-content-between">
                 <div>
                     <h3 class="fw-bold text-center mb-4">Di Riccardo</h3>
@@ -60,13 +60,18 @@
 <script>
 import { mapState, mapActions } from "pinia";
 import orderStore from "../stores/orderStore";
+import tablesStore from "../stores/tablesStore";
 
 export default {
     computed: {
         ...mapState(orderStore, ['tempOrderBill', 'tempOrderItem'])
     },
     methods: {
-        ...mapActions(orderStore, ['timeInChinese', 'billTotalCount', 'billTotalPrice', 'tableStatePay'])
+        ...mapActions(orderStore, ['timeInChinese', 'billTotalCount', 'billTotalPrice', 'tableStatePay']),
+        ...mapActions(tablesStore, ['getOffcanvas'])
+    },
+    mounted() {
+        this.getOffcanvas(this.$refs.orderBillClose);
     },
 }
 </script>

@@ -1,10 +1,12 @@
 import { defineStore } from "pinia";
 import axios from "axios";
+import router from '../router'
 export default defineStore('tablesStore', {
     state: () => ({
         tables: [],
         showStaffLogin: 0,
-        tableInfo: {}
+        tableInfo: {},
+        orderBillClose: {}
     }),
     actions: {
         // 取得所有桌位資訊 並判斷是否顯示啟用表單 以及判斷是否初始化桌位資訊
@@ -17,10 +19,13 @@ export default defineStore('tablesStore', {
                         localStorage.removeItem('tableId');
                         localStorage.removeItem('staffId');
                         localStorage.removeItem('orderId');
+                        this.orderBillClose.click();
+                        router.push("/#/");
+                        this.getTablesState();
                     }
                 }
             }).catch(err => {
-                alert(err.response.data.message);
+                console.dir(err)
             });
         },
         // 修改桌位資訊成啟用狀態
@@ -49,5 +54,10 @@ export default defineStore('tablesStore', {
                 return false
             }
         },
+        getOffcanvas(orderBillClose) {
+            console.log('參數: ',orderBillClose);
+            this.orderBillClose = orderBillClose;
+            console.log('資料: ',this.orderBillClose);
+        }
     }
 })
