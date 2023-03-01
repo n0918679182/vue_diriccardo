@@ -2,7 +2,6 @@
 可下載 db.json 配合 [GitHub pages](https://n0918679182.github.io/vue_diriccardo/#/) 一起做測試
 
 進入畫面後的員工啟用表單的員工編號可以輸入預設資料 a123
-image.png
 
 ### 此專題另有搭配後台系統：
 - [GitHub Repository](https://github.com/n0918679182/vue_diriccardo_back)
