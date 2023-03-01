@@ -1,9 +1,10 @@
 # Diriccardo (前台)
 可下載 db.json 配合 [GitHub pages](https://n0918679182.github.io/vue_diriccardo/#/) 一起做測試
+進入畫面後的員工啟用表單的員工編號可以輸入預設資料 a123
 
 ### 此專題另有搭配後台系統：
-[GitHub Repository]()
-[GitHub pages]()
+- [GitHub Repository](https://github.com/n0918679182/vue_diriccardo_back)
+- [GitHub pages](https://n0918679182.github.io/vue_diriccardo_back/#/)
 
 ### 專題製作相關連結
 - 網站地圖：[GitMind](https://gitmind.com/app/docs/m5l34zjh)
