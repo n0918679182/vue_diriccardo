@@ -11,7 +11,7 @@ export default defineStore('tablesStore', {
     actions: {
         // 取得所有桌位資訊 並判斷是否顯示啟用表單 以及判斷是否初始化桌位資訊
         getTablesState() {
-            axios.get('http://localhost:3000/tableState').then(resp => {
+            axios.get('https://diriccardo-server.onrender.com/tableState').then(resp => {
                 this.tables = resp.data
                 if (localStorage.getItem('tableId')) {
                     this.showStaffLogin = this.tables.filter(o => o.tableId == localStorage.getItem('tableId'))[0].using;
