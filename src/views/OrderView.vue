@@ -11,8 +11,8 @@
                         <li class="nav-item w-100 text-center d-flex" role="presentation" v-for="i in menuItem"
                             :key="i.type">
                             <a class="text-white w-100 mt-auto mb-auto" :class="{ 'active': i.type == 'contorni' }"
-                                id="home-tab" data-bs-toggle="tab" :data-bs-target="'#' + i.type" type="button"
-                                role="tab" :aria-controls="i.type" aria-selected="true">{{ i.chi }}</a>
+                                id="home-tab" data-bs-toggle="tab" :data-bs-target="'#' + i.type" type="button" role="tab"
+                                :aria-controls="i.type" aria-selected="true">{{ i.chi }}</a>
                         </li>
                     </ul>
                 </div>
@@ -59,14 +59,14 @@
                 </div>
                 <div class="modal-body p-0 d-flex justify-content-between">
                     <div class="py-3 px-5 changeOrderCountBtn"
-                        @click="tempProduct.count < 1 ? 0 : tempProduct.count -= 1" role="button">
+                        @click="() => tempProduct.count < 1 ? 0 : tempProduct.count -= 1" role="button">
                         -</div>
                     <div class="p-3">{{ tempProduct.count }}</div>
-                    <div class="py-3 px-5 changeOrderCountBtn" @click="tempProduct.count += 1" role="button">+</div>
+                    <div class="py-3 px-5 changeOrderCountBtn" @click="() => tempProduct.count += 1" role="button">+</div>
                 </div>
                 <div class="modal-footer py-1">
                     <button type="button" class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal"
-                        id="closeOrderItemModal" @click="tempProduct.count = 0">取消</button>
+                        id="closeOrderItemModal" @click="() => tempProduct.count = 0">取消</button>
                     <button type="button" class="btn btn-danger btn-sm" @click="sentOrderItem">確定</button>
                 </div>
             </div>
@@ -91,7 +91,7 @@ export default {
     },
     computed: {
         ...mapState(productStore, ['menuItem', 'products']),
-        ...mapState(cartStore, ['tempProduct','chosenOrders']),
+        ...mapState(cartStore, ['tempProduct', 'chosenOrders']),
         ...mapState(loadingStore, ['isLoading'])
     },
     components: {

@@ -161,7 +161,7 @@ export default defineStore('cartStore', {
             let haveOrder = false;
             let orderId = 0;
             const alreadyOrders = [];
-            await axios.get('http://localhost:3000/kitchenOrders').then(resp => {
+            await axios.get('https://diriccardo-server.onrender.com/kitchenOrders').then(resp => {
                 resp.data.forEach(o => {
                     if (o.tableId == localStorage.getItem('tableId')) {
                         haveOrder = true;

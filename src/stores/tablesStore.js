@@ -55,9 +55,7 @@ export default defineStore('tablesStore', {
             }
         },
         getOffcanvas(orderBillClose) {
-            console.log('參數: ',orderBillClose);
             this.orderBillClose = orderBillClose;
-            console.log('資料: ',this.orderBillClose);
         }
     }
 })
