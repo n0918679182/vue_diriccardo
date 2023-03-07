@@ -66,7 +66,7 @@ export default defineStore('eventStore', {
             })
 
             if (haveBill) {
-                axios.patch('https://diriccardo-server.onrender.com/orderList' + billId, { orders: tempOrder.orders, subtotal: oldSubtotal + tempOrder.subtotal }).then(resp => {
+                axios.patch('https://diriccardo-server.onrender.com/orderList/' + billId, { orders: tempOrder.orders, subtotal: oldSubtotal + tempOrder.subtotal }).then(resp => {
                     document.getElementById('checkOrderClose').click();
                     Swal.fire({
                         icon: 'success',
@@ -93,7 +93,7 @@ export default defineStore('eventStore', {
                     tempId = resp.data.filter(o => {
                         return o.tableId == localStorage.getItem('tableId');
                     })[0].id
-                    axios.patch('https://diriccardo-server.onrender.com/tableState' + tempId, { orderSerial: newSerial }).catch(err => alert(err.response.data.message));
+                    axios.patch('https://diriccardo-server.onrender.com/tableState/' + tempId, { orderSerial: newSerial }).catch(err => alert(err.response.data.message));
                 })
             }
         },

@@ -33,7 +33,7 @@ export default defineStore('tablesStore', {
             localStorage.setItem('staffId', tableInfo.staffCode);
             localStorage.setItem('tableId', tableInfo.tableNum);
             this.tableInfo = tableInfo;
-            axios.patch('https://diriccardo-server.onrender.com/tableState' + tableInfo.id, {
+            axios.patch('https://diriccardo-server.onrender.com/tableState/' + tableInfo.id, {
                 "customerNum": tableInfo.peopleNum,
                 "sitTime": new Date().toTimeString().substring(0, 5).split(':').join(' : '),
                 "staffId": tableInfo.staffCode,

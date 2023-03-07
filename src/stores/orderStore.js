@@ -68,7 +68,7 @@ export default defineStore('orderStore', {
                 totalPrice += (o.count * o.price);
             })
             if (localStorage.getItem('orderId')) {
-                axios.patch('https://diriccardo-server.onrender.com/orderList' + localStorage.getItem('orderId'), { subtotal: totalPrice }).catch(err => alert(err.response.data.message));
+                axios.patch('https://diriccardo-server.onrender.com/orderList/' + localStorage.getItem('orderId'), { subtotal: totalPrice }).catch(err => alert(err.response.data.message));
             }
             return totalPrice;
         },
@@ -76,7 +76,7 @@ export default defineStore('orderStore', {
         tableStatePay() {
             const {tables} = tableStore();
             const tempTable = tables.filter(o => o.tableId == localStorage.getItem('tableId'))[0]
-            axios.patch('https://diriccardo-server.onrender.com/tableState' + tempTable.id, { state: 1 }).catch(err => alert(err.response.data.message))
+            axios.patch('https://diriccardo-server.onrender.com/tableState/' + tempTable.id, { state: 1 }).catch(err => alert(err.response.data.message))
         },
     }
 })

@@ -117,7 +117,7 @@ export default defineStore('cartStore', {
                 tempOrder.orders.forEach(item => {
                     oldOrders.push(item);
                 })
-                axios.patch('https://diriccardo-server.onrender.com/orderList' + billId, { orders: oldOrders }).then(resp => {
+                axios.patch('https://diriccardo-server.onrender.com/orderList/' + billId, { orders: oldOrders }).then(resp => {
                     // 刪除所有已選餐點
                     this.cancelAllChosen();
                     // 關閉側邊offcanvas
@@ -151,7 +151,7 @@ export default defineStore('cartStore', {
                     tempId = resp.data.filter(o => {
                         return o.tableId == localStorage.getItem('tableId');
                     })[0].id
-                    axios.patch('https://diriccardo-server.onrender.com/tableState' + tempId, { orderSerial: newSerial }).catch(err => alert(err.response.data.message));
+                    axios.patch('https://diriccardo-server.onrender.com/tableState/' + tempId, { orderSerial: newSerial }).catch(err => alert(err.response.data.message));
                 })
             }
 
@@ -177,7 +177,7 @@ export default defineStore('cartStore', {
                 theOrder.orders.forEach(item => {
                     alreadyOrders.push(item);
                 })
-                axios.patch('https://diriccardo-server.onrender.com/kitchenOrders' + orderId, { orders: alreadyOrders }).catch(err => alert(err.response.data.message));
+                axios.patch('https://diriccardo-server.onrender.com/kitchenOrders/' + orderId, { orders: alreadyOrders }).catch(err => alert(err.response.data.message));
             } else {
                 const kitchenOrder = {
                     tableId: theOrder.tableId,
