@@ -104,7 +104,7 @@ export default {
     mounted() {
         setInterval(() => {
             this.getTablesState();
-        }, 2000)
+        }, 1000)
         this.getStaffs();
     },
 }
