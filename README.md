@@ -1,5 +1,5 @@
 # Diriccardo (前台)
-可下載 db.json 配合 [GitHub pages](https://n0918679182.github.io/vue_diriccardo/#/) 一起做測試
+DEMO: [GitHub pages](https://n0918679182.github.io/vue_diriccardo/#/)
 
 進入畫面後的員工啟用表單的員工編號可以輸入預設資料 a123
 
