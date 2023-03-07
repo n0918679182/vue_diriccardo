@@ -9,7 +9,7 @@ export default defineStore('productStore', {
         async getProducts() {
             this.products = [];
             this.menuItem = [];
-            await axios.get('http://localhost:3000/products').then(resp => {
+            await axios.get('https://diriccardo-server.onrender.com/products').then(resp => {
                 this.products = resp.data;
                 const set = new Set();
                 resp.data.filter(item => !set.has(item.type) ? set.add(item.type) : false).forEach(o => {

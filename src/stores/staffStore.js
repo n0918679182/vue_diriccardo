@@ -6,7 +6,7 @@ export default defineStore('staffStore', {
     }),
     actions: {
         async getStaffs() {
-            await axios.get('http://localhost:3000/staffs').then(resp=>{
+            await axios.get('https://diriccardo-server.onrender.com/staffs').then(resp=>{
                 this.staffs = resp.data
             }).catch(err => {
                 alert(err.response.data.message);

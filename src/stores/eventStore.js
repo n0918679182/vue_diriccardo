@@ -17,7 +17,7 @@ export default defineStore('eventStore', {
     }),
     actions: {
         getEvents() {
-            axios.get('http://localhost:3000/event').then(resp => {
+            axios.get('https://diriccardo-server.onrender.com/event').then(resp => {
                 this.events = resp.data;
             }).catch(err => alert(err.response.data.message));
         },
@@ -46,7 +46,7 @@ export default defineStore('eventStore', {
             tempOrder.orders.push(this.tempEvent.productNum);
 
             // 取得所有Bill
-            await axios.get('http://localhost:3000/orderList').then(resp => {
+            await axios.get('https://diriccardo-server.onrender.com/orderList').then(resp => {
                 // 判斷該桌號是否已經有訂單了
                 resp.data.forEach(o => {
                     if (o.tableId == localStorage.getItem('tableId')) {
@@ -66,7 +66,7 @@ export default defineStore('eventStore', {
             })
 
             if (haveBill) {
-                axios.patch('http://localhost:3000/orderList/' + billId, { orders: tempOrder.orders, subtotal: oldSubtotal + tempOrder.subtotal }).then(resp => {
+                axios.patch('https://diriccardo-server.onrender.com/orderList' + billId, { orders: tempOrder.orders, subtotal: oldSubtotal + tempOrder.subtotal }).then(resp => {
                     document.getElementById('checkOrderClose').click();
                     Swal.fire({
                         icon: 'success',
@@ -77,7 +77,7 @@ export default defineStore('eventStore', {
                 }).catch(err => alert(err.response.data.message));
             } else {
                 // DB建立訂單
-                axios.post('http://localhost:3000/orderList', tempOrder).then(resp => {
+                axios.post('https://diriccardo-server.onrender.com/orderList', tempOrder).then(resp => {
                     document.getElementById('checkOrderClose').click();
                     Swal.fire({
                         icon: 'success',
@@ -88,12 +88,12 @@ export default defineStore('eventStore', {
                 }).catch(err => alert(err.response.data.message));
 
                 // 更新桌位資訊的 orderSerial
-                axios.get('http://localhost:3000/tableState').then(resp => {
+                axios.get('https://diriccardo-server.onrender.com/tableState').then(resp => {
                     let tempId;
                     tempId = resp.data.filter(o => {
                         return o.tableId == localStorage.getItem('tableId');
                     })[0].id
-                    axios.patch('http://localhost:3000/tableState/' + tempId, { orderSerial: newSerial }).catch(err => alert(err.response.data.message));
+                    axios.patch('https://diriccardo-server.onrender.com/tableState' + tempId, { orderSerial: newSerial }).catch(err => alert(err.response.data.message));
                 })
             }
         },

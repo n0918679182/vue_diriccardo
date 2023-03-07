@@ -14,7 +14,7 @@ export default defineStore('orderStore', {
             this.tempOrderItem = [];
             let sortedBillOrders = {};
 
-            await axios.get('http://localhost:3000/orderList').then(resp => {
+            await axios.get('https://diriccardo-server.onrender.com/orderList').then(resp => {
                 // 取得該桌號的訂單
                 this.tempOrderBill = resp.data.filter(o => {
                     return o.tableId == localStorage.getItem('tableId');
@@ -34,7 +34,7 @@ export default defineStore('orderStore', {
             })
 
             // 取得所有餐點資訊
-            await axios.get('http://localhost:3000/products').then(resp => {
+            await axios.get('https://diriccardo-server.onrender.com/products').then(resp => {
                 // 將重新編排過的統計資料的key值先存入暫存
                 resp.data.forEach(o => {
                     Object.keys(sortedBillOrders).forEach(k => {
@@ -68,7 +68,7 @@ export default defineStore('orderStore', {
                 totalPrice += (o.count * o.price);
             })
             if (localStorage.getItem('orderId')) {
-                axios.patch('http://localhost:3000/orderList/' + localStorage.getItem('orderId'), { subtotal: totalPrice }).catch(err => alert(err.response.data.message));
+                axios.patch('https://diriccardo-server.onrender.com/orderList' + localStorage.getItem('orderId'), { subtotal: totalPrice }).catch(err => alert(err.response.data.message));
             }
             return totalPrice;
         },
@@ -76,7 +76,7 @@ export default defineStore('orderStore', {
         tableStatePay() {
             const {tables} = tableStore();
             const tempTable = tables.filter(o => o.tableId == localStorage.getItem('tableId'))[0]
-            axios.patch('http://localhost:3000/tableState/' + tempTable.id, { state: 1 }).catch(err => alert(err.response.data.message))
+            axios.patch('https://diriccardo-server.onrender.com/tableState' + tempTable.id, { state: 1 }).catch(err => alert(err.response.data.message))
         },
     }
 })
