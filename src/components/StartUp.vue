@@ -2,8 +2,8 @@
     <div class="w-100 vh-100 cover d-flex justify-content-center align-items-center" v-if="!showStaffLogin">
         <div class="rounded-1 w-25 bg-white p-5">
             <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">請選擇桌號</label>
-                <select class="form-select" aria-label="Default select example" v-model="tableInfo.tableNum">
+                <label for="tableId" class="form-label">請選擇桌號</label>
+                <select class="form-select" aria-label="tableIdLabel" id="tableId" v-model="tableInfo.tableNum">
                     <template v-for="table in tables" :key="table.id">
                         <option :value="table.tableId" v-if="table.tableId != 'path' && table.customerNum == 0">{{
                             table.tableId }}</option>
@@ -11,12 +11,15 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">請輸入用餐人數</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" v-model="tableInfo.peopleNum">
+                <label for="peopleNum" class="form-label">請輸入用餐人數</label>
+                <!-- <input type="text" class="form-control" id="peopleNum" v-model="tableInfo.peopleNum"> -->
+                <select class="form-select" aria-label="tableIdLabel" id="peopleNum" v-model="tableInfo.peopleNum">
+                        <option v-for="num in 4" :key="num" :value="num" >{{ num }}</option>
+                </select>
             </div>
             <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">請輸入員工編號</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" v-model="tableInfo.staffCode">
+                <label for="staffCode" class="form-label">請輸入員工編號</label>
+                <input type="text" class="form-control" id="staffCode" v-model="tableInfo.staffCode">
             </div>
             <div class="w-100 text-center pt-4 pb-0">
                 <button type="button" class="btn btn-danger p-2" @click="beginSys">進入點餐系統</button>
