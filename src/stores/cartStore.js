@@ -111,7 +111,7 @@ export default defineStore('cartStore', {
                         })
                     }
                 })
-            })
+            }).catch(err => console.dir(err))
             await this.addToKitchen(tempOrder);
             if (haveBill) {
                 tempOrder.orders.forEach(item => {
@@ -128,7 +128,7 @@ export default defineStore('cartStore', {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                }).catch(err => alert(err.response.data.message));
+                }).catch(err => console.dir(err));
             } else {
                 // DB建立訂單
                 axios.post('https://diriccardo-server.onrender.com/orderList', tempOrder).then(resp => {
@@ -143,7 +143,7 @@ export default defineStore('cartStore', {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                }).catch(err => alert(err.response.data.message));
+                }).catch(err => console.dir(err));
 
                 // 更新桌位資訊的 orderSerial
                 axios.get('https://diriccardo-server.onrender.com/tableState').then(resp => {
@@ -151,7 +151,7 @@ export default defineStore('cartStore', {
                     tempId = resp.data.filter(o => {
                         return o.tableId == localStorage.getItem('tableId');
                     })[0].id
-                    axios.patch('https://diriccardo-server.onrender.com/tableState/' + tempId, { orderSerial: newSerial }).catch(err => alert(err.response.data.message));
+                    axios.patch('https://diriccardo-server.onrender.com/tableState/' + tempId, { orderSerial: newSerial }).catch(err => console.dir(err));
                 })
             }
 
@@ -171,19 +171,19 @@ export default defineStore('cartStore', {
                         })
                     }
                 })
-            })
+            }).catch(err => console.dir(err))
 
             if (haveOrder) {
                 theOrder.orders.forEach(item => {
                     alreadyOrders.push(item);
                 })
-                axios.patch('https://diriccardo-server.onrender.com/kitchenOrders/' + orderId, { orders: alreadyOrders }).catch(err => alert(err.response.data.message));
+                axios.patch('https://diriccardo-server.onrender.com/kitchenOrders/' + orderId, { orders: alreadyOrders }).catch(err => console.dir(err));
             } else {
                 const kitchenOrder = {
                     tableId: theOrder.tableId,
                     orders: theOrder.orders
                 }
-                axios.post('https://diriccardo-server.onrender.com/kitchenOrders', kitchenOrder).catch(err => alert(err.response.data.message));
+                axios.post('https://diriccardo-server.onrender.com/kitchenOrders', kitchenOrder).catch(err => console.dir(err));
             }
         },
         // 隨機產生訂單編號

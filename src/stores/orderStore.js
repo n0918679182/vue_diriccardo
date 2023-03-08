@@ -31,6 +31,8 @@ export default defineStore('orderStore', {
                         return prev;
                     }, {});
                 }
+            }).catch(err=>{
+                console.dir(err);
             })
 
             // 取得所有餐點資訊
@@ -43,6 +45,8 @@ export default defineStore('orderStore', {
                         }
                     })
                 })
+            }).catch(err=>{
+                console.dir(err);
             })
 
             // 將暫存新增數量欄位並輸入對應的數量
@@ -68,7 +72,7 @@ export default defineStore('orderStore', {
                 totalPrice += (o.count * o.price);
             })
             if (localStorage.getItem('orderId')) {
-                axios.patch('https://diriccardo-server.onrender.com/orderList/' + localStorage.getItem('orderId'), { subtotal: totalPrice }).catch(err => alert(err.response.data.message));
+                axios.patch('https://diriccardo-server.onrender.com/orderList/' + localStorage.getItem('orderId'), { subtotal: totalPrice }).catch(err => console.dir(err));
             }
             return totalPrice;
         },
@@ -76,7 +80,7 @@ export default defineStore('orderStore', {
         tableStatePay() {
             const {tables} = tableStore();
             const tempTable = tables.filter(o => o.tableId == localStorage.getItem('tableId'))[0]
-            axios.patch('https://diriccardo-server.onrender.com/tableState/' + tempTable.id, { state: 1 }).catch(err => alert(err.response.data.message))
+            axios.patch('https://diriccardo-server.onrender.com/tableState/' + tempTable.id, { state: 1 }).catch(err => console.dir(err))
         },
     }
 })

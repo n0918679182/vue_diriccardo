@@ -19,7 +19,7 @@ export default defineStore('eventStore', {
         getEvents() {
             axios.get('https://diriccardo-server.onrender.com/event').then(resp => {
                 this.events = resp.data;
-            }).catch(err => alert(err.response.data.message));
+            }).catch(err => console.dir(err));
         },
         getEvent(event) {
             this.tempEvent = event;
@@ -63,7 +63,7 @@ export default defineStore('eventStore', {
                         }
                     }
                 })
-            })
+            }).catch(err => console.dir(err));
 
             if (haveBill) {
                 axios.patch('https://diriccardo-server.onrender.com/orderList/' + billId, { orders: tempOrder.orders, subtotal: oldSubtotal + tempOrder.subtotal }).then(resp => {
@@ -74,7 +74,7 @@ export default defineStore('eventStore', {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                }).catch(err => alert(err.response.data.message));
+                }).catch(err => console.dir(err));
             } else {
                 // DB建立訂單
                 axios.post('https://diriccardo-server.onrender.com/orderList', tempOrder).then(resp => {
@@ -85,7 +85,7 @@ export default defineStore('eventStore', {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                }).catch(err => alert(err.response.data.message));
+                }).catch(err => console.dir(err));
 
                 // 更新桌位資訊的 orderSerial
                 axios.get('https://diriccardo-server.onrender.com/tableState').then(resp => {
@@ -93,7 +93,7 @@ export default defineStore('eventStore', {
                     tempId = resp.data.filter(o => {
                         return o.tableId == localStorage.getItem('tableId');
                     })[0].id
-                    axios.patch('https://diriccardo-server.onrender.com/tableState/' + tempId, { orderSerial: newSerial }).catch(err => alert(err.response.data.message));
+                    axios.patch('https://diriccardo-server.onrender.com/tableState/' + tempId, { orderSerial: newSerial }).catch(err => console.dir(err));
                 })
             }
         },

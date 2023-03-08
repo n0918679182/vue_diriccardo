@@ -34,12 +34,12 @@ export default defineStore('tablesStore', {
             localStorage.setItem('tableId', tableInfo.tableNum);
             this.tableInfo = tableInfo;
             axios.patch('https://diriccardo-server.onrender.com/tableState/' + tableInfo.id, {
-                "customerNum": tableInfo.peopleNum,
-                "sitTime": new Date().toTimeString().substring(0, 5).split(':').join(' : '),
-                "staffId": tableInfo.staffCode,
-                "using": 1
+                customerNum: tableInfo.peopleNum,
+                sitTime: new Date().toTimeString().substring(0, 5).split(':').join(' : '),
+                staffId: tableInfo.staffCode,
+                using: 1
             }).catch(err => {
-                alert(err.response.data.message);
+                console.dir(err)
             });
         },
         // 判斷是否鎖定螢幕 (點擊我要結帳變更參數)

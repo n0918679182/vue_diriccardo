@@ -9,7 +9,7 @@ export default defineStore('staffStore', {
             await axios.get('https://diriccardo-server.onrender.com/staffs').then(resp=>{
                 this.staffs = resp.data
             }).catch(err => {
-                alert(err.response.data.message);
+                console.dir(err);
             });
         }
     }
