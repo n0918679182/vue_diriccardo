@@ -12,7 +12,6 @@
             </div>
             <div class="mb-3">
                 <label for="peopleNum" class="form-label">請輸入用餐人數</label>
-                <!-- <input type="text" class="form-control" id="peopleNum" v-model="tableInfo.peopleNum"> -->
                 <select class="form-select" aria-label="tableIdLabel" id="peopleNum" v-model="tableInfo.peopleNum">
                         <option v-for="num in 4" :key="num" :value="num" >{{ num }}</option>
                 </select>
