@@ -6,14 +6,15 @@ export default defineStore('tablesStore', {
         tables: [],
         showStaffLogin: 0,
         tableInfo: {},
-        orderBillClose: {}
+        orderBillClose: {},
+        patchReady: false
     }),
     actions: {
         // 取得所有桌位資訊 並判斷是否顯示啟用表單 以及判斷是否初始化桌位資訊
         getTablesState() {
             axios.get('https://diriccardo-server.onrender.com/tableState').then(resp => {
-                this.tables = resp.data
-                if (localStorage.getItem('tableId')) {
+                this.tables = resp.data;
+                if (localStorage.getItem('tableId') && this.patchReady) {
                     this.showStaffLogin = this.tables.filter(o => o.tableId == localStorage.getItem('tableId'))[0].using;
                     if (this.showStaffLogin == 0) {
                         localStorage.removeItem('tableId');
@@ -32,12 +33,15 @@ export default defineStore('tablesStore', {
         tableUsing(tableInfo) {
             localStorage.setItem('staffId', tableInfo.staffCode);
             localStorage.setItem('tableId', tableInfo.tableNum);
+
             this.tableInfo = tableInfo;
             axios.patch('https://diriccardo-server.onrender.com/tableState/' + tableInfo.id, {
-                customerNum: tableInfo.peopleNum,
-                sitTime: new Date().toTimeString().substring(0, 5).split(':').join(' : '),
-                staffId: tableInfo.staffCode,
-                using: 1
+                "customerNum": tableInfo.peopleNum,
+                "sitTime": new Date().toTimeString().substring(0, 5).split(':').join(' : '),
+                "staffId": tableInfo.staffCode,
+                "using": 1
+            }).then(()=>{
+                this.patchReady = true;
             }).catch(err => {
                 console.dir(err)
             });

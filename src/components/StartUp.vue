@@ -5,10 +5,8 @@
                 <label for="formGroupExampleInput" class="form-label">請選擇桌號</label>
                 <select class="form-select" aria-label="Default select example" v-model="tableInfo.tableNum">
                     <template v-for="table in tables" :key="table.id">
-                        <option :value="table.tableId" v-if="table.tableId != 'path' && table.customerNum == 0"
-                            @click="getId(table.id)">{{
-                                table.tableId
-                            }}</option>
+                        <option :value="table.tableId" v-if="table.tableId != 'path' && table.customerNum == 0">{{
+                            table.tableId }}</option>
                     </template>
                 </select>
             </div>
@@ -50,6 +48,7 @@ export default {
         ...mapActions(staffStore, ['getStaffs']),
         // 員工啟用POS機
         async beginSys() {
+            this.tableInfo.id = this.tables.filter(t => t.tableId == this.tableInfo.tableNum)[0].id;
             let staffLogin = false;
             // 判斷沒有未填欄位
             if (this.tableInfo.tableNum == '' || this.tableInfo.peopleNum == '' || this.tableInfo.staffCode == '') {
@@ -92,10 +91,7 @@ export default {
                     });
                 }
             }
-        },
-        getId(id) {
-            this.tableInfo.id = id;
-        },
+        }
     },
     computed: {
         ...mapState(tablesStore, ['tables', 'showStaffLogin']),
