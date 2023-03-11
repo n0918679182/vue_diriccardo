@@ -7,11 +7,9 @@
             <div class="container pt-4">
                 <div class="row">
                     <div class="col-4" v-for="e in events" :key="e.id">
-                        <div class="w-100 overflow-hidden mb-5" style="height: 450px;" data-bs-toggle="modal"
-                            data-bs-target="#eventModal" @click="getEvent(e)">
+                        <div class="w-100 overflow-hidden mb-5 rounded-2" style="height: 450px;" data-bs-toggle="modal"
+                            data-bs-target="#eventModal" @click="()=>getEvent(e)">
                             <img :src="e.imgUrl" alt="" class="img-fluid">
-                            <!-- <img src="https://images.unsplash.com/photo-1678382998507-8e8f2bee31d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-                                alt="" class="img-fluid"> -->
                         </div>
                     </div>
                 </div>
