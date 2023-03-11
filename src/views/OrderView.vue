@@ -24,7 +24,7 @@
                             :class="{ 'show': i.type == 'contorni', 'active': i.type == 'contorni' }">
                             <div class="row">
                                 <div class="col-3 mb-5" v-for="p in products.filter(o => o.type == i.type)" :key="p.id"
-                                    data-bs-toggle="modal" data-bs-target="#orderItemModal" @click="getOrderItem(p)"
+                                    data-bs-toggle="modal" data-bs-target="#orderItemModal" @click="() => getOrderItem(p)"
                                     role="button">
                                     <div class="bg-img-set rounded-2 bg-shadow d-flex align-items-end position-relative"
                                         style="height: 190px;" :style="{ backgroundImage: 'url(' + p.imgUrl + ')' }">
@@ -59,14 +59,14 @@
                 </div>
                 <div class="modal-body p-0 d-flex justify-content-between">
                     <div class="py-3 px-5 changeOrderCountBtn"
-                        @click="() => tempProduct.count < 1 ? 0 : tempProduct.count -= 1" role="button">
+                        @click="() => tempProduct.count < 2 ? tempProduct.count = 1 : tempProduct.count -= 1" role="button">
                         -</div>
                     <div class="p-3">{{ tempProduct.count }}</div>
                     <div class="py-3 px-5 changeOrderCountBtn" @click="() => tempProduct.count += 1" role="button">+</div>
                 </div>
                 <div class="modal-footer py-1">
                     <button type="button" class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal"
-                        id="closeOrderItemModal" @click="() => tempProduct.count = 0">取消</button>
+                        id="closeOrderItemModal" @click="() => tempProduct.count = 1">取消</button>
                     <button type="button" class="btn btn-danger btn-sm" @click="sentOrderItem">確定</button>
                 </div>
             </div>

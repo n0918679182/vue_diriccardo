@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 export default defineStore('cartStore', {
     state: () => ({
         tempProduct: {      // 暫存所選的餐點資訊
-            count: 0,
+            count: 1,
             id: 0,
             imgUrl: '',
             name: '',

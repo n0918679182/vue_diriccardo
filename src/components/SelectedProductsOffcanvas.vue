@@ -9,17 +9,18 @@
             <p class="h4 text-secondary">尚未選取餐點</p>
         </div>
         <div class="offcanvas-body justify-content-between d-flex flex-column" v-else>
-            <div class="border rounded-2 p-2 mb-3 maxh500">
-                <div class="py-1 row" v-for="(order, index) in chosenOrders" :key="index">
+            <div class="border rounded-2 p-2 mb-3 maxh500 noScrollbar">
+                <div class="py-1 row " v-for="(order, index) in chosenOrders" :key="index">
                     <p class="mb-0 col-6 d-flex align-items-center">{{ order.name }}</p>
                     <p class="mb-0 col-3 d-flex align-items-center">$ {{ order.price }}</p>
                     <p class="mb-0 col-2 d-flex align-items-center">x {{ order.count }}</p>
                     <i class="m-0 col-1 bx bx-x text-danger d-flex justify-content-end align-items-center h3" role="button"
-                        @click="cancelOrderItem(index)"></i>
+                        @click="() => cancelOrderItem(index)"></i>
                     <div class="col-12 border d-flex mt-2">
                         <div class="py-1 px-5 changeOrderCountBtn w-50 text-center border-end" role="button"
-                            @click="order.count < 2 ? 0 : order.count -= 1">-</div>
-                        <div class="py-1 px-5 changeOrderCountBtn w-50 text-center" role="button" @click="order.count += 1">
+                            @click="() => order.count < 2 ? 0 : order.count -= 1">-</div>
+                        <div class="py-1 px-5 changeOrderCountBtn w-50 text-center" role="button"
+                            @click="() => order.count += 1">
                             +</div>
                     </div>
                 </div>

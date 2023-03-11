@@ -5,3 +5,14 @@
 body {
     user-select: none;
 }
+
+.noScrollbar {
+    /* IE and Edge */
+    -ms-overflow-style: none !important;
+    /* Firefox */
+    scrollbar-width: none !important;
+    /* Chrome */
+    &::-webkit-scrollbar {
+        display: none !important;
+    }
+}

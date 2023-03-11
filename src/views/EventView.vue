@@ -3,7 +3,7 @@
     <div class="event w-100 pt-4 overflow-hidden position-relative vh-100">
         <img src="../assets/images/event/ordered-bg1.png" class="eventBg_img1" alt="">
         <img src="../assets/images/event/ordered-bg2.png" class="eventBg_img2" alt="">
-        <div class="bg-event p-4 border-top border-bottom border-white mt-20">
+        <div class="bg-event noScrollbar p-4 border-top border-bottom border-white mt-20">
             <div class="container pt-4">
                 <div class="row">
                     <div class="col-4" v-for="e in events" :key="e.id">
@@ -108,13 +108,5 @@ export default {
     background: rgba(255, 255, 255, .8);
     max-height: 75vh;
     overflow: scroll;
-    /* IE and Edge */
-    -ms-overflow-style: none;
-    /* Firefox */
-    scrollbar-width: none;
-    /* Chrome */
-    &::-webkit-scrollbar {
-        display: none;
-    }
 }
 </style>
