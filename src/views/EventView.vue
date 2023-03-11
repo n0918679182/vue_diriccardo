@@ -3,12 +3,16 @@
     <div class="event w-100 pt-4 overflow-hidden position-relative vh-100">
         <img src="../assets/images/event/ordered-bg1.png" class="eventBg_img1" alt="">
         <img src="../assets/images/event/ordered-bg2.png" class="eventBg_img2" alt="">
-        <div class="container mt-20 pt-4">
-            <div class="bg-event row rounded-2 p-4 border border-white">
-                <div class="col-4" v-for="e in events" :key="e.id">
-                    <div class="w-100" style="height: 450px;" data-bs-toggle="modal" data-bs-target="#eventModal"
-                        @click="getEvent(e)">
-                        <img :src="e.imgUrl" alt="" class="img-fluid">
+        <div class="bg-event p-4 border-top border-bottom border-white  mt-20">
+            <div class="container pt-4">
+                <div class="row">
+                    <div class="col-4" v-for="e in events" :key="e.id">
+                        <div class="w-100 overflow-hidden mb-5" style="height: 450px;" data-bs-toggle="modal"
+                            data-bs-target="#eventModal" @click="getEvent(e)">
+                            <img :src="e.imgUrl" alt="" class="img-fluid">
+                            <!-- <img src="https://images.unsplash.com/photo-1678382998507-8e8f2bee31d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                                alt="" class="img-fluid"> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -54,14 +58,13 @@
                     <p>確定點購嗎？</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-target="#eventModal"
-                        data-bs-toggle="modal" id="checkOrderClose">取消</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-target="#eventModal" data-bs-toggle="modal"
+                        id="checkOrderClose">取消</button>
                     <button type="button" class="btn btn-danger" @click="addToOrder">確定</button>
                 </div>
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -104,8 +107,8 @@ export default {
 }
 
 .bg-event {
-    background: rgba(255, 255, 255, .5);
-    max-height: 540px;
+    background: rgba(255, 255, 255, .8);
+    max-height: 440px;
     overflow: scroll;
     -ms-overflow-style: none;
     /* IE and Edge */
