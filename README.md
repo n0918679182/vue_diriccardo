@@ -3,8 +3,8 @@ DEMO: [GitHub pages](https://n0918679182.github.io/vue_diriccardo/#/)
 
 此作品模擬餐廳點餐 pad 建議用全螢幕來使用
 
+### 導覽
 進入畫面後的員工啟用表單的員工編號可以輸入預設資料 a123
-
 <img src="https://github.com/n0918679182/vue_diriccardo/blob/master/README_img/img01.png?raw=true" width="600px">
 
 ### 此專題另有搭配後台系統：

@@ -27,7 +27,7 @@ export default defineStore('eventStore', {
             this.tempBr.detail = this.tempEvent.detail.split('\n');
         },
         async addToOrder() {
-            const { randomOrderId } = cartStore();
+            const { randomOrderId, addToKitchen } = cartStore();
             let haveBill = false;
             let billId = 0;
             let oldSubtotal = 0;
@@ -45,6 +45,7 @@ export default defineStore('eventStore', {
             tempOrder.user = 0;
             tempOrder.orders.push(this.tempEvent.productNum);
 
+            await addToKitchen(tempOrder);
             // 取得所有Bill
             await axios.get('https://diriccardo-server.onrender.com/orderList').then(resp => {
                 // 判斷該桌號是否已經有訂單了
