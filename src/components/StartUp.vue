@@ -3,7 +3,7 @@
         <div class="rounded-1 w-25 bg-white p-5">
             <div class="mb-3">
                 <label for="tableId" class="form-label">請選擇桌號</label>
-                <select class="form-select" aria-label="tableIdLabel" id="tableId" v-model="tableInfo.tableNum">
+                <select class="form-select selectThinScrollbar" aria-label="tableIdLabel" id="tableId" v-model="tableInfo.tableNum">
                     <template v-for="table in tables" :key="table.id">
                         <option :value="table.tableId" v-if="table.tableId != 'path' && table.customerNum == 0">{{
                             table.tableId }}</option>

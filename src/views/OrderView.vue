@@ -10,7 +10,7 @@
                         role="tablist">
                         <li class="nav-item w-100 text-center d-flex" role="presentation" v-for="i in menuItem"
                             :key="i.type">
-                            <a class="text-white w-100 mt-auto mb-auto" :class="{ 'active': i.type == 'contorni' }"
+                            <a class="text-white w-100 mt-auto mb-auto sidebar" :class="{ 'active': i.type == 'contorni' }"
                                 id="home-tab" data-bs-toggle="tab" :data-bs-target="'#' + i.type" type="button" role="tab"
                                 :aria-controls="i.type" aria-selected="true">{{ i.chi }}</a>
                         </li>
@@ -125,10 +125,9 @@ export default {
 .bg-order-sidemenu {
     background: linear-gradient(to top, #000, #5F0000);
     height: 500px;
-}
-
-.bg-order-sidemenu li {
-    height: 50px;
+    li {
+        height: 50px;
+    }
 }
 
 .bg-shadow {
@@ -181,5 +180,11 @@ export default {
     /* IE and Edge */
     scrollbar-width: none;
     /* Firefox */
+}
+
+.sidebar.active {
+    background: rgb(255, 255, 255, .2) !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 </style>
